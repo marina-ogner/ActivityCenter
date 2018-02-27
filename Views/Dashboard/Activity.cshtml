@@ -1,0 +1,25 @@
+<h1>@ViewBag.Activity.Title</h1>
+
+
+@if(ViewBag.User.UserId == @ViewBag.Activity.User.UserId){
+    <button> <a href="/delete/@ViewBag.Activity.ActivityId">Delete</a> </button>
+    } else if (@ViewBag.Activity.ParticipantExist(ViewBag.User.UserId)){
+        <button><a href="/leave/@ViewBag.Activity.ActivityId">Leave</a></button>
+    } else {
+        <button><a href="/join/@ViewBag.Activity.ActivityId">Join</a></button>
+    }
+
+<h3>Event Coordinator: @ViewBag.Activity.User.FirstName</h3>
+
+<h3>Description</h3>
+<p>@ViewBag.Activity.Description</p>
+
+<h3>Participants:</h3>
+
+<ul>
+    @foreach(var participant in ViewBag.Activity.Participants){
+            <li>@participant.User.FirstName</li>
+    }
+</ul>
+<h3>Address:</h3>
+<img src=@ViewBag.src>

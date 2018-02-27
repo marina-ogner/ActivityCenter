@@ -1,0 +1,39 @@
+<h2> Welcome, @ViewBag.User.FirstName!</h2>
+
+<h1>Dojo Activity center</h1>
+
+@ViewBag.Error
+
+<table>
+    <tr>
+        <th>Activity</th>
+        <th>Date and Time</th>
+        <th>Duration</th>
+        <th>Event Coordinator</th>
+        <th>Number of Participants</th>
+        <th>Actions</th>
+    </tr>
+        @foreach(var activity in ViewBag.Activities){
+        <tr>
+            <th>
+                <a href="activity/@activity.ActivityId"> @activity.Title</a>
+            </th>
+            <th> @activity.Datetime.ToString("M/d @ hh:mm tt")</th>
+            <th> @activity.ConvertDuration() </th>
+            <th> @activity.User.FirstName </th>
+            <th> @activity.NumberParticipants()</th>
+            <th>
+                @if(ViewBag.User.UserId == activity.User.UserId){
+                <a href="delete/@activity.ActivityId">Delete</a>
+                } else if (@activity.ParticipantExist(ViewBag.User.UserId)){
+                <a href="leave/@activity.ActivityId">Leave</a>
+                } else {
+                <a href="join/@activity.ActivityId">Join</a>
+                }
+            </th>
+        </tr>
+        }
+</table>
+
+
+<button><a href="add">Add new activity</a></button>

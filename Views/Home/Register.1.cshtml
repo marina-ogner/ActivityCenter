@@ -1,0 +1,29 @@
+@model EntityProject.Models.RegistrationViewModel
+@using (Html.BeginForm("Register", "Home", FormMethod.Post, new {})){
+
+<h1>Registration</h1>
+
+<form asp-controller="Home" asp-action="Register" method="post">
+    <label asp-for="FirstName"></label>
+    <input asp-for="FirstName" />
+    <span asp-validation-for="FirstName"></span>
+    <br>
+    <label asp-for="LastName"></label>
+    <input asp-for="LastName" />
+    <span asp-validation-for="LastName"></span>
+    <br>
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <span asp-validation-for="Email"></span>
+    <br>
+    <label asp-for="Password"></label>
+    <input asp-for="Password" />
+    <span asp-validation-for="Password"></span>
+    <br> 
+    <label asp-for="PasswordConfirmation"></label>
+    <input asp-for="PasswordConfirmation" />
+    <span asp-validation-for="PasswordConfirmation"></span>
+    <br>
+    <button>Register</button>
+</form>
+}

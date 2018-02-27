@@ -1,0 +1,8 @@
+C:\Users\Marina\Desktop\netCore\EntityProject\bin\Debug\netcoreapp1.1\EntityProject.deps.json
+C:\Users\Marina\Desktop\netCore\EntityProject\bin\Debug\netcoreapp1.1\EntityProject.runtimeconfig.json
+C:\Users\Marina\Desktop\netCore\EntityProject\bin\Debug\netcoreapp1.1\EntityProject.runtimeconfig.dev.json
+C:\Users\Marina\Desktop\netCore\EntityProject\bin\Debug\netcoreapp1.1\EntityProject.dll
+C:\Users\Marina\Desktop\netCore\EntityProject\bin\Debug\netcoreapp1.1\EntityProject.pdb
+C:\Users\Marina\Desktop\netCore\EntityProject\obj\Debug\netcoreapp1.1\EntityProject.AssemblyInfo.cs
+C:\Users\Marina\Desktop\netCore\EntityProject\obj\Debug\netcoreapp1.1\EntityProject.dll
+C:\Users\Marina\Desktop\netCore\EntityProject\obj\Debug\netcoreapp1.1\EntityProject.pdb

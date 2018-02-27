@@ -1,0 +1,14 @@
+@model EntityProject.Models.LoginViewModel
+<h1>Login</h1>
+
+<form asp-controller="Home" asp-action="Login" method="post">
+    <label asp-for="EmailLog"></label>
+    <input asp-for="EmailLog" />
+    <span asp-validation-for="EmailLog">@ViewBag.emailError </span>
+    <br>
+    <label asp-for="PasswordLog"></label>
+    <input asp-for="PasswordLog" />
+    <span asp-validation-for="PasswordLog">@ViewBag.passwordError </span>
+    <br> 
+    <button>Login</button>
+</form>
