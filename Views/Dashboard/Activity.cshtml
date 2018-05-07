@@ -1,25 +1,60 @@
-<h1>@ViewBag.Activity.Title</h1>
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EntityProject</a> -->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Logout">Log off</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <h1>@ViewBag.Activity.Title</h1>
+    </div>
 
+    <div class="col-sm-6">
+            @if(ViewBag.User.UserId == @ViewBag.Activity.User.UserId){
+                <button class="btn btn-secondary">
+                    <a href="/delete/@ViewBag.Activity.ActivityId">Delete Activity</a>
+                </button>
+                } else if (@ViewBag.Activity.ParticipantExist(ViewBag.User.UserId)){
+                <button class="btn btn-secondary">
+                    <a href="/leave/@ViewBag.Activity.ActivityId">Leave Activity</a>
+                </button>
+                } else {
+                <button class="btn btn-secondary">
+                    <a href="/join/@ViewBag.Activity.ActivityId">Join Activity</a>
+                </button>
+                }
+        <h3>Event Coordinator: @ViewBag.Activity.User.FirstName</h3>
 
-@if(ViewBag.User.UserId == @ViewBag.Activity.User.UserId){
-    <button> <a href="/delete/@ViewBag.Activity.ActivityId">Delete</a> </button>
-    } else if (@ViewBag.Activity.ParticipantExist(ViewBag.User.UserId)){
-        <button><a href="/leave/@ViewBag.Activity.ActivityId">Leave</a></button>
-    } else {
-        <button><a href="/join/@ViewBag.Activity.ActivityId">Join</a></button>
-    }
+        <h3>Description</h3>
+        <p>@ViewBag.Activity.Description</p>
 
-<h3>Event Coordinator: @ViewBag.Activity.User.FirstName</h3>
+        <h3>Participants:</h3>
 
-<h3>Description</h3>
-<p>@ViewBag.Activity.Description</p>
-
-<h3>Participants:</h3>
-
-<ul>
-    @foreach(var participant in ViewBag.Activity.Participants){
+        <ul>
+            @foreach(var participant in ViewBag.Activity.Participants){
             <li>@participant.User.FirstName</li>
-    }
-</ul>
-<h3>Address:</h3>
-<img src=@ViewBag.src>
+            }
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <h3>Address:</h3>
+        <img src=@ViewBag.src>
+    </div>
+</div>

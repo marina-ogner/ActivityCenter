@@ -22,7 +22,6 @@ namespace EntityProject.Controllers
         {
             ModelBundle Bundle = new ModelBundle { model1 = new RegistrationViewModel(), model2 = new LoginViewModel() };
             return View("Index", Bundle);
-            // return View();
         }
 
         [HttpGet]
@@ -47,7 +46,6 @@ namespace EntityProject.Controllers
                 };
                 _context.users.Add(NewUser);
                 _context.SaveChanges();
-                // List<Dictionary<string, object>> Id = DbConnector.Query("SELECT id FROM users ORDER BY id DESC LIMIT 1;");
                 User last = _context.users.Last();
                 int id = last.UserId;
                 HttpContext.Session.SetInt32("id", id);
@@ -57,12 +55,12 @@ namespace EntityProject.Controllers
             return View("Index", Bundle);
         }
 
+        [HttpPost]
+        [Route("login")]
         public IActionResult Login(LoginViewModel model2)
         {
             if (ModelState.IsValid)
             {
-                // List<Dictionary<string, object>> Id = DbConnector.Query($"select id from users where email = '{email}';");
-                // int id = (int)Id[0]["id"];
                 List<User> user = _context.users.Where(u => u.Email == model2.EmailLog).ToList(); // can use SingleDefault instead of Where
                 if (user.Count > 0)
                 {

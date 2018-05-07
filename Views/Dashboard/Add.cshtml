@@ -1,37 +1,127 @@
-<h1>Create an Activity!</h1>
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="text-danger" class="sr-only">Toggle navigation</span>
+                    <span class="text-danger" class="icon-bar"></span>
+                    <span class="text-danger" class="icon-bar"></span>
+                    <span class="text-danger" class="icon-bar"></span>
+                </button>
+                <!-- <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EntityProject</a> -->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Logout">Log off</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <h1>Create an Activity!</h1>
+    </div>
 
-@model EntityProject.Models.ActivityViewModel
+    @model EntityProject.Models.ActivityViewModel
 
-<form asp-controller="Dashboard" asp-action="CreateActivity" method="post">
-    <label asp-for="Title"></label>
-    <input asp-for="Title" />
-    <span asp-validation-for="Title"></span>
-    <br>
-    <label asp-for="Time"></label>
-    <input asp-for="Time" />
-    <span asp-validation-for="Time"></span>
-    <br>
-    <label asp-for="Date"></label>
-    <input asp-for="Date" />
-    <span asp-validation-for="Date"></span>
-    <br>
-    <label asp-for="Duration"></label>
-    <input asp-for="Duration" />
-    <span asp-validation-for="Duration"></span>
-    <select asp-for="Units">
-        <option value=60>Hours</option>
-        <option value=1440>Days</option>
-        <option value=1>Minutes</option>
-    </select>
-    <span asp-validation-for="Units"></span>
-    <br>
-    <label asp-for="Address"></label>
-    <input asp-for="Address" />
-    <span asp-validation-for="Address"></span>
-    <br>
-    <label asp-for="Description"></label>
-    <textarea asp-for="Description" id="" cols="300" rows="3"></textarea>
-    <span asp-validation-for="Description"></span>
-    <br>
-    <button id = "add">Create Activity</button>
-</form>
+    <form class="needs-validation" novalidate asp-controller="Dashboard" asp-action="CreateActivity" method="post">
+        <div class="form-group row">
+            <label for="Title" class="col-sm-4 col-form-label" asp-for="Title"></label>
+            <div class="col-sm-8">
+                <input class="form-control" id="Title" asp-for="Title" />
+                <div class="invalid-feedback">
+                    <span class="text-danger" asp-validation-for="Title"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Time" class="col-sm-4 col-form-label" asp-for="Time"></label>
+            <div class="col-sm-8">
+                <input class="form-control" id="Time" asp-for="Time" />
+                <div class="invalid-feedback">
+                    <span class="text-danger" asp-validation-for="Time"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Date" class="col-sm-4 col-form-label" asp-for="Date"></label>
+            <div class="col-sm-8">
+                <input class="form-control" id="Date" asp-for="Date" />
+                <div class="invalid-feedback">
+                    <span class="text-danger" asp-validation-for="Date"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Duration" class="col-sm-4 col-form-label" asp-for="Duration"></label>
+            <div class="col-sm-8">
+                <input class="form-control" id="Duration" asp-for="Duration" />
+                <div class="invalid-feedback">
+                    <span class="text-danger" asp-validation-for="Duration"></span>
+                </div>
+                <select class="form-control" asp-for="Units">
+                <option value=60>Hours</option>
+                <option value=1440>Days</option>
+                <option value=1>Minutes</option>
+            </select>
+            <div class="invalid-feedback">
+                <span class="text-danger" asp-validation-for="Units"></span>
+            </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="Address" class="col-sm-4 col-form-label" asp-for="Address"></label>
+                <div class="col-sm-8">
+                <input class="form-control" id="Address" asp-for="Address" />
+                <div class="invalid-feedback">
+                    <span class="text-danger" asp-validation-for="Address"></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="Description" class="col-sm-4 col-form-label" asp-for="Description"></label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="Description" asp-for="Description" id="" cols="300" rows="3"></textarea>
+                    <div class="invalid-feedback">
+                        <span class="text-danger" asp-validation-for="Description"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-8">
+                    <button class="btn btn-info" id="add">Create Activity</button>
+                </div>
+            </div>
+    </form>
+    </div>
+
+    <!-- <form class="needs-validation" novalidate asp-controller="Home" asp-action="Login" method="post">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-4 col-form-label" asp-for="EmailLog"></label>
+            <div class="col-sm-8">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" asp-for="EmailLog" required/>
+                <div class="invalid-feedback">
+                    <span class="text-danger" class="text-danger" asp-validation-for="EmailLog">@ViewBag.emailError </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-4 col-form-label" asp-for="PasswordLog"></label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" asp-for="PasswordLog" required />
+                <div class="invalid-feedback">
+                    <span class="text-danger" class="text-danger" asp-validation-for="PasswordLog">@ViewBag.passwordError </span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-8">
+                <button class="btn btn-info">Login</button>
+            </div>
+        </div>
+    </form> -->

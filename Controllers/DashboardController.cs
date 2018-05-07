@@ -43,7 +43,7 @@ namespace EntityProject.Controllers
         }
 
         [HttpGet]
-        [Route("logout")]
+    
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
@@ -129,7 +129,7 @@ namespace EntityProject.Controllers
             User user = _context.users.Include(u => u.Activities).ThenInclude(a => a.Activity).SingleOrDefault(u => u.UserId == (int)HttpContext.Session.GetInt32("id"));
             foreach (var par in user.Activities)
             {
-                if (par.Activity.Datetime.AddMinutes(par.Activity.Duration) < joiningActivity.Datetime || joiningActivity.Datetime.AddMinutes(joiningActivity.Duration) < par.Activity.Datetime)
+                if (((DateTime)(par.Activity.Datetime)).AddMinutes((int)(par.Activity.Duration)) < joiningActivity.Datetime || ((DateTime)joiningActivity.Datetime).AddMinutes((int)joiningActivity.Duration) < par.Activity.Datetime)
                 {
 
                 }

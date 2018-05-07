@@ -1,24 +1,50 @@
-<h2> Welcome, @ViewBag.User.FirstName!</h2>
+<div class="container">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">EntityProject</a> -->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Index">Home</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Dashboard" asp-action="Logout">Log off</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="page-header">
+        <h2 class="text-center"> Welcome, @ViewBag.User.FirstName!</h2>
 
-<h1>Dojo Activity center</h1>
+        <h1 class="text-center">Activity center</h1>
+    </div>
 
-@ViewBag.Error
+    @ViewBag.Error
 
-<table>
-    <tr>
-        <th>Activity</th>
-        <th>Date and Time</th>
-        <th>Duration</th>
-        <th>Event Coordinator</th>
-        <th>Number of Participants</th>
-        <th>Actions</th>
-    </tr>
+    <table class="table table-hover">
+        <tr>
+            <th>Activity</th>
+            <th>Date and Time</th>
+            <th>Duration</th>
+            <th>Event Coordinator</th>
+            <th>Number of Participants</th>
+            <th>Actions</th>
+        </tr>
         @foreach(var activity in ViewBag.Activities){
         <tr>
             <th>
                 <a href="activity/@activity.ActivityId"> @activity.Title</a>
             </th>
-            <th> @activity.Datetime.ToString("M/d @ hh:mm tt")</th>
+            <th> @activity.Datetime.ToString("M/d @ hh:mm tt yyyy")</th>
             <th> @activity.ConvertDuration() </th>
             <th> @activity.User.FirstName </th>
             <th> @activity.NumberParticipants()</th>
@@ -33,7 +59,10 @@
             </th>
         </tr>
         }
-</table>
+    </table>
 
 
-<button><a href="add">Add new activity</a></button>
+    <button class="btn btn-secondary">
+        <a href="add">Add new activity</a>
+    </button>
+</div>

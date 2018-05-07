@@ -62,15 +62,15 @@ namespace EntityProject.Models
         
         [Required]
         [DataType(DataType.Time)]
-        public TimeSpan Time { get; set; }
+        public TimeSpan? Time { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [CheckFuture]
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         [Required]
-        public int Duration { get; set; }
+        public int? Duration { get; set; }
 
         [Required]
         public int Units { get; set; }
@@ -87,9 +87,9 @@ namespace EntityProject.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            DateTime Today = DateTime.Now;
+            DateTime? Today = DateTime.Now;
 
-            if ((DateTime)value < Today)
+            if ((DateTime?)value < Today)
             {
                 return new ValidationResult("Date must be in the Future");
             }

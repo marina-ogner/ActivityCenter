@@ -8,8 +8,8 @@ namespace EntityProject.Models
     {
         public int ActivityId { get; set; }
         public string Title { get; set; }
-        public DateTime Datetime { get; set; }
-        public int Duration { get; set; }
+        public DateTime? Datetime { get; set; }
+        public int? Duration { get; set; }
         public string Description { get; set; }
         public int UserId {get; set; }
         public User User { get; set; }
@@ -46,7 +46,7 @@ namespace EntityProject.Models
 
         public int TimeDifference(){
             DateTime Today = DateTime.Now;
-            Double Difference = Datetime.Subtract(Today).TotalMinutes;
+            Double Difference = ((DateTime)(Datetime)).Subtract(Today).TotalMinutes;
             if(Difference<0){
                 return -1;
             }
